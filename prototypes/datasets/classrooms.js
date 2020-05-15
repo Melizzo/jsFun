@@ -1,4 +1,4 @@
-const classrooms = [
+ const classrooms = [
   { roomLetter: 'A', program: 'FE', capacity: 32 },
   { roomLetter: 'B', program: 'BE', capacity: 29 },
   { roomLetter: 'C', program: 'FE', capacity: 27 },
