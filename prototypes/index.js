@@ -431,11 +431,10 @@ const nationalParksPrompts = {
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 
-    const result = nationalParks.reduce((acc, element) => {
-    
-
-    }, {parksToVisit = [], parksVisited = []});
-    return result;
+    return result = nationalParks.reduce((acc, element) => {
+      !element.visited ? acc.parksToVisit.push(element.name) : acc.parksVisited.push(element.name)
+      return acc
+    }, {parksToVisit : [], parksVisited : []});
   },
 
   getParkInEachState() {
@@ -448,9 +447,11 @@ const nationalParksPrompts = {
     // { Florida: 'Everglades' } ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
+    return result = nationalParks.map(park => {
+      return {
+        [park.location] : park.name
+      }
+    });
   },
 
   getParkActivities() {
@@ -469,8 +470,13 @@ const nationalParksPrompts = {
     //   'backpacking',
     //   'rock climbing' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return result = nationalParks.reduce((acc, element) => {
+      element.activities.forEach(activity => {
+        !acc.includes(activity) ? acc.push(activity) : null
+      }, )
+      return acc
+    }, []);
+
   }
 };
 
@@ -485,10 +491,9 @@ const breweryPrompts = {
   getBeerCount() {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
+    return result = breweries.reduce((acc, brewery) => {
+     return acc = acc += brewery.beers.length;
+    }, 0 )
   },
 
   getBreweryBeerCount() {
@@ -500,9 +505,12 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
+    return result = breweries.map(brewery => {
+      return {
+        name: brewery.name,
+        beerCount: brewery.beers.length
+      }
+    });
   },
 
   findHighestAbvBeer() {
@@ -510,9 +518,9 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
+    return result = breweries.reduce((acc, element) => {
+      return acc = element.beers.sort((a, b) => b.abv - a.abv)[0]
+    }, {});
   }
 };
 
@@ -544,16 +552,8 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = instructors.map(instructor => {
-      const studentCounting = cohorts.find(cohort => {
-        return cohort.module === instructor.module
-      })
-      return {
-        name : instructor.name,
-        studentCount : studentCounting.studentCount
-        }
-    });
-    return result;
+    // const result = 
+    // return result;
 
     // Annotation:
     // Write your annotation here as a comment
